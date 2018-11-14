@@ -1,0 +1,68 @@
+﻿@*@{
+        ViewBag.Title = "About";
+    }
+    <h2>@ViewBag.Title.</h2>
+    <h3>@ViewBag.Message</h3>
+
+    <p>Use this area to provide additional information.</p>*@
+
+
+@*@model IEnumerable<Dark_Souls.NET.Models.Fighter>
+    @model IEnumerable<Dark_Souls.NET.Models.Monster>*@
+@model Dark_Souls.NET.Models.Fighter
+
+@{
+    var m = ViewBag.mon;
+    var f = ViewBag.fig;
+
+    int MHP = m.HP;
+    int FHP = f.HP;
+    int MATT = m.ATTACK;
+    int FATT = f.ATTACK;
+
+}
+
+<h2>Monsters</h2>
+
+<p>Name: @m.NAME</p>
+<p>Health: @MHP</p>
+<p>Attack: @m.ATTACK</p>
+<br /><br />
+
+<h2>Fighter</h2>
+<p>Name: @f.NAME</p>
+<p>Health: @FHP</p>
+<p>Attack: @f.ATTACK</p>
+<p>Lives: @f.LIVES</p>
+
+@while ((MHP = MHP - FATT) >= 1 && (FHP = FHP - MATT) >= 1)
+{
+    <h2>Monsters</h2>
+
+    <p>Name: @m.NAME</p>
+    <p>Health: @MHP</p>
+    <p>Attack: @m.ATTACK</p>
+    <br /><br />
+
+    <h2>Fighter</h2>
+    <p>Name: @f.NAME</p>
+    <p>Health: @FHP</p>
+    <p>Attack: @f.ATTACK</p>
+    <p>Lives: @f.LIVES</p>
+}
+
+@if (MHP <= 0)
+{
+    <p>@f.NAME Wins!</p>
+    <p>Gains @m.GOLD Gold</p>
+}
+else if (FHP <= 0)
+{
+    <p>@f.NAME died! Oh, No!</p>
+}
+else
+{
+    <p>Whaaaa.....</p>
+}
+
+

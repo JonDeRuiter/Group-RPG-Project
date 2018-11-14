@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Dark_Souls.NET.Models.Monster>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ATTACK)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GOLD)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ATTACK)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GOLD)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
